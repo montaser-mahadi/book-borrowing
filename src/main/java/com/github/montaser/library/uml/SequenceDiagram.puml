@@ -1,0 +1,56 @@
+@startuml
+
+actor       Actor       as actor
+participant LibraryApp  as libApp
+database    Book_Borrowing    as book_borrowing
+
+group scope
+alt
+actor->libApp: register new borrower
+libApp->book_borrowing: create new borrower record
+book_borrowing-->libApp: borrower registered into database
+libApp-->actor: new borrower register
+end alt
+
+alt
+actor->libApp: register new book
+libApp->book_borrowing: create new book into database
+book_borrowing-->libApp: book registered into database
+libApp-->actor: new book registered
+end alt
+
+alt
+actor->libApp: get all books
+libApp->book_borrowing: fetch all books from database
+book_borrowing-->libApp: books fetched from database in list
+libApp-->actor: returned list of books or empty list
+end alt
+
+alt borrowing book/books
+actor->libApp: borrowing a book/books
+libApp->book_borrowing: flag into database this/those books is/are borrowed
+book_borrowing-->libApp: borrowed success to borrower
+libApp-->actor: borrowed success to borrower
+end alt
+
+alt get book/books based on ISBN
+actor->libApp: get book based on ISBN
+alt if book have same author && same name
+libApp->libApp: check isbn
+alt if ISBN same
+libApp->book_borrowing: returned one book
+book_borrowing-->libApp: returned one book from database
+
+else else returned different books
+libApp->book_borrowing: returned different books
+book_borrowing--> libApp: returned different books from database
+
+libApp->book_borrowing: flag into database this/those books is/are borrowed
+book_borrowing-->libApp: borrowed success to borrower
+libApp-->actor: borrowed success to borrower
+end alt
+
+end alt
+
+end group
+@enduml

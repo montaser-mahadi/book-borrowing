@@ -1,0 +1,20 @@
+spring:
+  application.name: library-system-api
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_borrowing
+    username: book_borrowing
+    password: book_borrowing
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 2304
