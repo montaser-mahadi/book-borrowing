@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 public class BookDto {
 
-    private long id;
+    private Long id;
     private String title;
     private String author;
     private String isbn;
