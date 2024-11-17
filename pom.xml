@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.montaser.library</groupId>
-    <artifactId>book-borrowing</artifactId>
+    <artifactId>library-borrowing-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>library-system-api</name>
+    <name>library-borrowing-service</name>
     <description>Demo project for Spring Boot</description>
     <url/>
     <licenses>

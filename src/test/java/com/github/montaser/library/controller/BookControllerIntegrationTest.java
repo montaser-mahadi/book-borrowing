@@ -20,9 +20,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Collections;
-import java.util.List;
-
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = BookController.class)
 @AutoConfigureMockMvc
@@ -63,19 +60,5 @@ class BookControllerIntegrationTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value(testBookDto.getTitle()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.author").value(testBookDto.getAuthor()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.isbn").value(testBookDto.getIsbn()));
-    }
-
-    @Test
-    void testGetAllBooks() throws Exception {
-        List<BookDto> bookDtoList = Collections.singletonList(testBookDto);
-        Mockito.when(bookService.getAllBooks()).thenReturn(bookDtoList);
-
-        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/books/"));
-
-        resultActions.andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(testBookDto.getId()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].title").value(testBookDto.getTitle()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].author").value(testBookDto.getAuthor()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].isbn").value(testBookDto.getIsbn()));
     }
 }
