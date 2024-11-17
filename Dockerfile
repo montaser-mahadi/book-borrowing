@@ -17,9 +17,7 @@ WORKDIR /app
 # Copy the built JAR file from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Set the log file path
-ENV LOG_FILE_PATH=/app/logs/library-management-system.log
 
 # Run the application
-CMD ["java", "-Dlogging.file.path=${LOG_FILE_PATH}", "-jar", "app.jar"]
+CMD ["java", "-jar", "app.jar"]
 
