@@ -7,7 +7,7 @@ spring:
     allow-circular-references: true
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/book_borrowing
+    url: jdbc:postgresql://postgres:5432/book_borrowing
     username: book_borrowing
     password: book_borrowing
     driver-class-name: org.postgresql.Driver
