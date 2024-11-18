@@ -1,52 +1,33 @@
-version: '3'
-
+version: '3.7'
 services:
-  postgres:
-    container_name: postgres-sql
-    image: postgres
+  db:
+    image: mysql:8.0
     environment:
-      POSTGRES_USER: book_borrowing
-      POSTGRES_PASSWORD: book_borrowing
-      PGDATA: /data/postgres
-    volumes:
-      - postgres:/data/postgres
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: library_dev
     ports:
-      - "5432:5432"
-    networks:
-      - postgres
-    restart: unless-stopped
+      - "3306:3306"
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
+  app:
+    image: library-management-system:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
-    volumes:
-      - pgadmin:/var/lib/pgadmin
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/library_dev
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
     ports:
-      - "5050:80"
-    networks:
-      - postgres
-    restart: unless-stopped
-
-#  app:
-#    build: .
-#    ports:
-#      - "2304:2304"
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://db/book_borrowing
-#      SPRING_DATASOURCE_USERNAME: book-borrowing
-#      SPRING_DATASOURCE_PASSWORD: book-borrowing
-#    depends_on:
-#      - postgres
-
-networks:
-  postgres:
-    driver: bridge
-
+      - "8080:8080"
+    volumes:
+      - app-logs:/app/logs
+    depends_on:
+      - db
 
 volumes:
-  postgres:
-  pgadmin:
+  app-logs:
+
+# docker stack deploy -c docker-compose.yml library-management-system
+# docker stack rm library-management-system

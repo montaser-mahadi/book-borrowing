@@ -1,22 +1,9 @@
 spring:
-  profile.active: dev
+  application:
+    name: Library Management System
 
-  application.name: library-borrowing-service
-  main:
-    allow-bean-definition-overriding: true
-    allow-circular-references: true
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/book_borrowing
-    username: book_borrowing
-    password: book_borrowing
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-
-server:
-  port: 2304
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
