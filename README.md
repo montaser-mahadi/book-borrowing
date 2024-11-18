@@ -40,7 +40,7 @@ Ensure you have the following setup:
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/thilina01/library-management-system.git
+    git clone https://github.com/montaser-mahadi/library-borrowing-service.git
     cd library-management-system
     ```
 
@@ -58,17 +58,17 @@ Ensure you have the following setup:
 
 1. **Build Docker image**:
     ```sh
-    docker build -t thilina01/library-management-system .
+    docker build -t montasermahadi/library-management-system .
     ```
 
 2. **Run Docker container**:
     ```sh
-    docker run -p 8080:8080 thilina01/library-management-system
+    docker run -p 8080:8080 montasermahadi/library-management-system
     ```
 
 3. **Run with a specific profile**:
     ```sh
-    docker run -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=prod" thilina01/library-management-system
+    docker run -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=prod" montasermahadi/library-management-system
     ```
 
 ### Docker Swarm
@@ -114,7 +114,7 @@ The Kubernetes manifests are located in the `k8s` directory and include the foll
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/thilina01/library-management-system.git
+    git clone https://github.com/montaser-mahadi/library-borrowing-service.git
     cd library-management-system
     ```
 
@@ -221,7 +221,7 @@ A Postman collection is available to facilitate testing and exploring the Librar
 **Postman Collection Information:**
 - **Name**: Library Management System
 - **Description**: Postman collection for the Library Management System API
-- **Schema**: [Postman Collection Schema](https://raw.githubusercontent.com/thilina01/library-management-system/main/postman_collection.json)
+- **Schema**: [Postman Collection Schema](https://raw.githubusercontent.com/montaser-mahadi/library-management-system/main/postman_collection.json)
 
 **Endpoints Included:**
 1. **Register a New Borrower**
