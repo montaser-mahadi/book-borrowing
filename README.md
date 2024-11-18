@@ -1,13 +1,14 @@
 # Library Management System 📚
 
-![Test Status](https://github.com/thilina01/library-management-system/actions/workflows/test.yml/badge.svg)
-![Build Status](https://github.com/thilina01/library-management-system/actions/workflows/docker-build-push.yml/badge.svg)
-![Docker Pulls](https://img.shields.io/docker/pulls/thilina01/library-management-system)
-![Docker Image Size](https://img.shields.io/docker/image-size/thilina01/library-management-system)
+![Test Status](https://github.com/montaser-mahadi/library-management-system/actions/workflows/test.yml/badge.svg)
+![Build Status](https://github.com/montaser-mahadi/library-management-system/actions/workflows/docker-build-push.yml/badge.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/montaser-mahadi/library-management-system)
+![Docker Image Size](https://img.shields.io/docker/image-size/montaser-mahadi/library-management-system)
 
 ## 📖 Overview
 
-The **Library Management System** is a comprehensive RESTful API for managing books and borrowers in a library. Key features include:
+The **Library Management System** is a comprehensive RESTful API for managing books and borrowers in a library. Key
+features include:
 
 - **Borrower and Book Registration**: Register new borrowers and books effortlessly.
 - **Book Management**: Borrow and return books with ease.
@@ -29,6 +30,7 @@ The **Library Management System** is a comprehensive RESTful API for managing bo
 ### Prerequisites
 
 Ensure you have the following setup:
+
 - Java 17
 - Docker
 - Maven
@@ -40,7 +42,7 @@ Ensure you have the following setup:
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/montaser-mahadi/library-borrowing-service.git
+    git clone https://github.com/montaser-mahadi/library-management-system.git
     cd library-management-system
     ```
 
@@ -85,7 +87,8 @@ Ensure you have the following setup:
 
 ### CI/CD with GitHub Actions
 
-Automate Docker image builds and pushes with GitHub Actions. Configuration is located in `.github/workflows/docker-build-push.yml`.
+Automate Docker image builds and pushes with GitHub Actions. Configuration is located
+in `.github/workflows/docker-build-push.yml`.
 
 - **Build and push Docker image**: Automatically triggered on pushes to the `main` branch.
 
@@ -102,6 +105,7 @@ Deploy the Library Management System to Kubernetes with MySQL.
 ### Kubernetes Manifests
 
 The Kubernetes manifests are located in the `k8s` directory and include the following files:
+
 - `mysql-secret.yaml`: Defines the Secrets for database credentials.
 - `mysql-deployment.yaml`: Defines the Deployment for the MySQL database.
 - `mysql-service.yaml`: Defines the Service to expose the MySQL database.
@@ -114,7 +118,7 @@ The Kubernetes manifests are located in the `k8s` directory and include the foll
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/montaser-mahadi/library-borrowing-service.git
+    git clone https://github.com/montaser-mahadi/library-management-system.git
     cd library-management-system
     ```
 
@@ -133,11 +137,13 @@ The Kubernetes manifests are located in the `k8s` directory and include the foll
 
 ### Accessing the Application
 
-- **LoadBalancer Service**: Once the Service is created, it will provision a LoadBalancer. You can get the external IP using:
+- **LoadBalancer Service**: Once the Service is created, it will provision a LoadBalancer. You can get the external IP
+  using:
     ```sh
     kubectl get svc library-management-system
     ```
-- **Ingress (optional)**: If you have set up an Ingress controller, you can access the application using the host defined in the `ingress.yaml` file. Ensure you have configured the DNS or `/etc/hosts` file to resolve the hostname.
+- **Ingress (optional)**: If you have set up an Ingress controller, you can access the application using the host
+  defined in the `ingress.yaml` file. Ensure you have configured the DNS or `/etc/hosts` file to resolve the hostname.
 
 ### Additional Commands
 
@@ -157,6 +163,7 @@ The Kubernetes manifests are located in the `k8s` directory and include the foll
 ### Cleanup
 
 To delete the resources created, run:
+
 ```sh
 kubectl delete -f k8s/mysql-secret.yaml
 kubectl delete -f k8s/mysql-pvc.yaml
@@ -171,19 +178,23 @@ kubectl delete -f k8s/ingress.yaml
 
 ## 📜 Logging
 
-This project uses SLF4J with Logback for logging. The log configuration can be found in `src/main/resources/logback.xml`.
+This project uses SLF4J with Logback for logging. The log configuration can be found
+in `src/main/resources/logback.xml`.
 
 ### Logback Configuration
 
-The Logback configuration specifies the logging pattern, log file location, and log rotation policy. You can customize the configuration to suit your needs.
+The Logback configuration specifies the logging pattern, log file location, and log rotation policy. You can customize
+the configuration to suit your needs.
 
 ### Accessing Logs
 
-Logs are written to both the console and a log file located at `logs/library-management-system.log`. The log file is rotated daily, and log files older than 30 days are automatically deleted.
+Logs are written to both the console and a log file located at `logs/library-management-system.log`. The log file is
+rotated daily, and log files older than 30 days are automatically deleted.
 
 ### Logging Levels
 
 The logging levels used in the project are:
+
 - `INFO`: General application information.
 - `DEBUG`: Detailed information used for debugging purposes.
 - `ERROR`: Error messages indicating that something went wrong.
@@ -193,6 +204,7 @@ You can adjust the logging levels in the Logback configuration file to control t
 ### Viewing Logs
 
 To view the logs, you can either:
+
 - Check the console output when running the application.
 - Open the log file located at `logs/library-management-system.log`.
 
@@ -200,7 +212,8 @@ To view the logs, you can either:
 
 ### Running Unit Tests
 
-Unit tests are implemented to ensure the functionality and reliability of the Library Management System. The tests can be run using Maven, and the results will be generated in a report format.
+Unit tests are implemented to ensure the functionality and reliability of the Library Management System. The tests can
+be run using Maven, and the results will be generated in a report format.
 
 **Running Tests:**
 
@@ -212,18 +225,24 @@ mvn test
 
 ### Test Status Badges
 
-You can monitor the status of your tests using badges that show the build status and test coverage. These badges will be updated automatically with each commit to the repository.
+You can monitor the status of your tests using badges that show the build status and test coverage. These badges will be
+updated automatically with each commit to the repository.
 
 ### Postman Collection
 
-A Postman collection is available to facilitate testing and exploring the Library Management System API. This collection includes various endpoints for managing borrowers and books. You can import this collection into Postman to quickly set up your API requests.
+A Postman collection is available to facilitate testing and exploring the Library Management System API. This collection
+includes various endpoints for managing borrowers and books. You can import this collection into Postman to quickly set
+up your API requests.
 
 **Postman Collection Information:**
+
 - **Name**: Library Management System
 - **Description**: Postman collection for the Library Management System API
-- **Schema**: [Postman Collection Schema](https://raw.githubusercontent.com/montaser-mahadi/library-management-system/main/postman_collection.json)
+- **Schema
+  **: [Postman Collection Schema](https://raw.githubusercontent.com/montaser-mahadi/library-management-system/main/postman_collection.json)
 
 **Endpoints Included:**
+
 1. **Register a New Borrower**
     - **Method**: POST
     - **URL**: `{{base_url}}/api/borrowers`
@@ -283,17 +302,21 @@ A Postman collection is available to facilitate testing and exploring the Librar
     - **URL**: `{{base_url}}/api/books/{{book_id}}`
 
 **Variables Included:**
+
 - **base_url**: `http://localhost:8080`
 - **borrower_id**: `1`
 - **book_id**: `1`
 
 ### Importing the Collection into Postman
+
 To import the Postman collection:
+
 1. Download the `postman_collection.json` file from the repository.
 2. Open Postman and click on `Import`.
 3. Select the `postman_collection.json` file and click `Open`.
 
-This will import all the endpoints into Postman, making it easier to test and interact with the Library Management System API.
+This will import all the endpoints into Postman, making it easier to test and interact with the Library Management
+System API.
 
 ### API Documentation with Swagger
 
